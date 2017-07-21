@@ -1,24 +1,31 @@
 var express = require('express');
 var app = express();
+var username;
+app.use(express.static('assets'));
 
-app.use('/store', function(req, res, next) {
-	console.log('Jestem pośrednikiem przy żądanu do /store');
-	next();
+app.set('view engine', 'pug');
+app.set('views','./views');
+
+app.get('/auth/google', function(req, res) {
+  res.render('first-view.pug',{header: 'Zaloguj się'});  
+
 });
 
-app.get('/', function (req, res) {
-    res.send('Hello world !');
+app.get('/auth/google', function(req, res){
+    res.render('/userscreen.pug');
+    const response = {
+    	username: req.query.Username,
+    	password: req.query.Password
+    };
+    res.end(JSON.stringify(response));
 });
 
-
-app.get('/store', function(req, res) {
-	res.send('To jest sklep');
+app.post('/userscreen', function(req, res) {
+	username = req.body.username; 
+	res.render('userscreen.pug', {header: 'Jesteś zalogowany', user: user});
 });
 
-
-var server = app.listen(3000, function() {
-    var host = server.address().address;
-    var port = server.address().port;
-
-    console.log('Przykładowa aplikacja nasłuchuje na http://' + host + ':' + port);
+app.listen(3000);
+app.use(function (req, res, next) {
+    res.status(404).send('Wybacz, nie mogliśmy odnaleźć tego, czego żądasz!')
 });
