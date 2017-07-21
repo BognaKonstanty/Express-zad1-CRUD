@@ -11,18 +11,18 @@ app.get('/auth/google', function(req, res) {
 
 });
 
-app.get('/auth/google', function(req, res){
+/*app.get('/auth/google', function(req, res){
     res.render('/userscreen.pug');
     const response = {
     	username: req.query.Username,
     	password: req.query.Password
     };
     res.end(JSON.stringify(response));
-});
+});*/
 
 app.post('/userscreen', function(req, res) {
-	username = req.body.username; 
-	res.render('userscreen.pug', {header: 'Jesteś zalogowany', user: user});
+	username : req.req.name; 
+	res.render('userscreen.pug', {header: 'Jesteś zalogowany', username: username});
 });
 
 app.listen(3000);
