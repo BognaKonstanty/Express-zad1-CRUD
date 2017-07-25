@@ -1,10 +1,12 @@
 var express = require('express');
+var bodyParser = require('body-parser')
 var app = express();
 var username;
 app.use(express.static('assets'));
 
 app.set('view engine', 'pug');
 app.set('views','./views');
+
 
 app.get('/auth/google', function(req, res) {
   res.render('first-view.pug',{header: 'Zaloguj się'});  
@@ -21,8 +23,10 @@ app.get('/auth/google', function(req, res) {
 });*/
 
 app.post('/userscreen', function(req, res) {
-	username : req.req.name; 
-	res.render('userscreen.pug', {header: 'Jesteś zalogowany', username: username});
+    //res.sendFile('/first-view.pug');
+	username : req.query.username; 
+	res.render('userscreen.pug', {header: ', jesteś zalogowany!', username: username});
+    //res.end(JSON.stringify(username));
 });
 
 app.listen(3000);
