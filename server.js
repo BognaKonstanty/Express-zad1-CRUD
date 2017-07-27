@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var app = express();
 var username;
+var password;
 app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -14,8 +15,14 @@ app.get('/auth/google', function(req, res) {
 });
 
 app.post('/userscreen', function(req, res) {
-	//username : req.username; 
-	res.render('userscreen.pug', {header: ', jesteś zalogowany!', username:req.username});
+    //password:req.body.password;
+    //password=password.length;
+    //if(password >= 8 ) {
+       res.render('userscreen.pug', {header: ', jesteś zalogowany!', username:req.body.username}); 
+    //}
+	//else {
+       // res.render('notlog.pug');
+    //}
 
 });
 
