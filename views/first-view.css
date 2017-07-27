@@ -1,0 +1,41 @@
+body {
+	margin: 0;
+	background-color:#AFEEEE;
+	display: :fix;
+	text-align: center;
+	justify-content: :center;
+	
+}
+.header {
+	margin: 0 auto;
+	padding: 10px;
+	background: darkblue;
+	color: yellow;
+	text-shadow: 1px 1px 4px red;
+	text-align: center;
+}
+.container {
+	max-width: 400px;
+	margin: 10 auto 0 auto;
+	padding: 10px;
+	text-align: center;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px black;
+}
+.buttons {
+	display: block;
+	padding: 10px;
+	color: white;
+	background: #800;
+	border: none;
+	border-radius: 3px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.3em;
+	margin: 5px;
+}
+.buttons:hover {
+	background: #955;
+	cursor: pointer;
+}

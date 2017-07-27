@@ -1,3 +1,6 @@
-h2 Witaj  #{header}
-h2 #{username}
-a(href="/auth/google") Powrót
+if(username)
+	h2 Witaj #{username} #{header}
+	a(href="/auth/google") Powrót
+	img(src="obrazek.png")
+else
+	a(href="/auth/notlog.pug")
