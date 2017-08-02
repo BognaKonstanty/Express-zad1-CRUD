@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var app = express();
-var username;
+
 var password;
 app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,18 +15,19 @@ app.get('/auth/google', function(req, res) {
 });
 
 app.post('/userscreen', function(req, res) {
-    //password:req.body.password;
-    //password=password.length;
-    //if(password >= 8 ) {
-       res.render('userscreen.pug', {header: ', jesteś zalogowany!', username:req.body.username}); 
-    //}
-	//else {
-       // res.render('notlog.pug');
-    //}
+    password = req.body.password;
+   if (password.length >= 8 ) {
+     res.render('userscreen.pug', {
+      header: ', jesteś zalogowany!', 
+         username: req.body.username
+      }); 
+     } else {
+       res.render('notlog.pug');
+     }
 
 });
 
 app.listen(3000);
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     res.status(404).send('Wybacz, nie mogliśmy odnaleźć tego, czego żądasz!')
 });
